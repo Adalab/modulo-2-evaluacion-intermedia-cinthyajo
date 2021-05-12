@@ -1,29 +1,36 @@
-'use strict';
+"use strict";
 
-const button = document.querySelector ('.js-button');
-const inputElement = document.querySelector ('.js-inputnumber');
-const msj = document.querySelector('.js-msj');
-const aleatorio = getRandomNumber (100);
+const button = document.querySelector(".js-button");
+const inputElement = document.querySelector(".js-inputnumber");
+const msj = document.querySelector(".js-msj");
+const inputRefresh = document.querySelector(".js-inputgo");
+const aleatorio = getRandomNumber(100);
 console.log(aleatorio);
 
-function handleClickButton (ev) {
-ev.preventDefault ();
-if (inputElement.value > aleatorio) {
-msj.value = "Demasiado alto";
+function handleClickButton(ev) {
+  ev.preventDefault();
+  //inputElement.value === <aleatorio || >aleatorio // true
 
-} else if (inputElement.value < aleatorio) {
-const msj = document.querySelector('.js-msj');
-msj.value = "Demasiado bajo";
+  /*if (inputRefresh === ){
+    const 
+}*/
 
-} else if (inputElement.value === aleatorio) {
-    const msj = document.querySelector('.js-msj');
+  if (inputElement.value > 100) {
+    const msj = document.querySelector(".js-msj");
+    msj.value = "Debe ser menor que 100";
+  } else if (inputElement.value > aleatorio) {
+    msj.value = "Demasiado alto";
+  } else if (inputElement.value < aleatorio) {
+    const msj = document.querySelector(".js-msj");
+    msj.value = "Demasiado bajo";
+  } else if (parseInt(inputElement.value) === aleatorio) {
+    const msj = document.querySelector(".js-msj");
     msj.value = "Has ganado campeona!!!";
-}
+  }
 }
 
 function getRandomNumber(max) {
-    return Math.ceil(Math.random() * max);
-    }
+  return Math.ceil(Math.random() * max);
+}
 
-button.addEventListener ('click', handleClickButton);
-
+button.addEventListener("click", handleClickButton);
